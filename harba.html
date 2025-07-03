@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harba UX UI Case Study | Milan Ristovski</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #F8F8F8;
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #121116;
+        }
+        @font-face {
+            font-family: 'Helvetica Neue Black Condensed';
+            src: url('fonts/Helvetica Neue 97 Black Condensed.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Helvetica Neue Bold Condensed';
+            src: url('fonts/Helvetica Neue Condensed Bold.ttf') format('truetype');
+        }
+
+        .font-blackcondensed {
+            font-family: 'Helvetica Neue Black Condensed', sans-serif;
+        }
+
+        .font-condensed {
+            font-family: 'Helvetica Neue Bold Condensed', sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 1.0s ease-out, transform 1.0s ease-out;
+        }
+        .fade-in.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        nav a:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body class="text-[#121116]">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const closeMenu = document.getElementById("close-menu");
+
+            menuToggle.addEventListener("click", () => {
+                mobileMenu.classList.remove("hidden");
+                mobileMenu.classList.add("flex");
+                menuToggle.classList.add("hidden");
+            });
+
+            closeMenu.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                mobileMenu.classList.remove("flex");
+                menuToggle.classList.remove("hidden");
+            });
+
+
+    const sections = document.querySelectorAll(".fade-in");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target); // Stop observing after it's shown
+            }
+        });
+    }, { threshold: 0.2 }); // Trigger when 20% of the section is visible
+
+    sections.forEach(section => observer.observe(section));
+});
+    </script>
+    
+    <!-- Header -->
+    <header class="relative flex justify-between items-center py-4 md:py-6 text-[16px] px-[32px] md:px-[140px] font-medium bg-[#EDEFF0]">
+    <a href="index.html" class="text-xl font-bold flex items-center h-full transition-colors duration-200 hover:text-gray-500">MILAN RISTOVSKI</a>
+    <nav class="hidden md:flex space-x-6">
+        <a href="https://drive.google.com/file/d/1QVr-Yve0I63jDH24ldbS-UIoLLUpB1cb/view?usp=sharing" class="transition-colors duration-200 hover:text-gray-500">CV</a>
+        <a href="https://www.linkedin.com/in/milanristovski13/" class="transition-colors duration-200 hover:text-gray-500">LINKEDIN</a>
+        <a href="https://dribbble.com/milanr13" class="transition-colors duration-200 hover:text-gray-500">DRIBBBLE</a>
+        <a href="mailto:milan.ristovski13@gmail.com" class="transition-colors duration-200 hover:text-gray-500">CONTACT</a>
+    </nav>
+    <button id="menu-toggle" class="md:hidden text-2xl z-20 translate-y-[-5px]">&#9776;</button>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-[#EDEFF0] text-center flex-col justify-center items-center hidden z-50">
+        <button id="close-menu" class="absolute top-6 right-6 text-3xl">&times;</button>
+        <div class="flex flex-col space-y-6 text-[20px] font-medium mt-24">
+            <a href="https://drive.google.com/file/d/1QVr-Yve0I63jDH24ldbS-UIoLLUpB1cb/view?usp=sharing" class="transition-colors duration-200 hover:text-gray-500">CV</a>
+            <a href="https://www.linkedin.com/in/milanristovski13/" class="transition-colors duration-200 hover:text-gray-500">LINKEDIN</a>
+            <a href="https://dribbble.com/milanr13" class="transition-colors duration-200 hover:text-gray-500">DRIBBBLE</a>
+            <a href="mailto:milan.ristovski13@gmail.com" class="transition-colors duration-200 hover:text-gray-500">CONTACT</a>
+        </div>
+    </div>
+</header>
+
+    <!-- Section 1 -->
+     <section class="relative h-[480px] md:h-[672px] flex flex-col justify-start items-center bg-[#EDEFF0] px-[32px] md:px-[100px]">
+    <div class="pt-[140px] z-10 text-center fade-in">
+      <h1 class="text-[36px] md:text-[50px] font-bold font-condensed">HARBA</h1>
+      <p class="text-[14px] md:text-[18px] font-normal leading-relaxed">
+        a mobile platform designed to connect boat owners with </br> 
+        marine professionals through a task bidding system
+      </p>
+    </div>
+    <img src="images/harba/harbabg.png" alt="Background" class="absolute bottom-0 -translate-x-1/2 w-full max-w-[1440px] h-[210px] md:h-[450px] object-cover z-0 fade-in" />
+  </section>
+
+       <!-- Section 2 -->
+  <section class="py-12 flex flex-col fade-in items-center">
+    <div class="text-left mx-[36px] md:mx-0 md:max-w-[600px]">
+      <h2 class="text-[20px] md:text-[24px] font-condensed font-bold mb-4">MY ROLE</h2>
+      <p class="text-[14px] md:text-[16px] font-normal text-justify">
+        This was a design test task completed in 12 hours, where I was asked to explore the experience of boat owners posting repair or maintenance jobs and receiving offers from marine craftsmen. The focus was on crafting an intuitive, well-structured UX with clear task states and category separation.<br />
+        The main phases of my work included: Mapping use cases, defining task flows, designing UI screens, and developing a visual system.
+        </p>
+    </div>
+  </section>
+
+
+ <section class="py-12 px-[36px] md:px-[100px] fade-in">
+    <div class="w-full">
+      <iframe 
+  class="w-full h-[500px] md:h-[900px]" 
+  style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+  src="https://embed.figma.com/proto/JoNXc6Z9Yz2E0tbWkJo2gN/Harba?page-id=54%3A8374&node-id=54-8375&viewport=367%2C468%2C0.22&scaling=scale-down&content-scaling=fixed&starting-point-node-id=54%3A8375&embed-host=share" 
+  allowfullscreen>
+</iframe>
+  </div>
+  </section>
+
+
+
+
+  
+
+    <a href="sixsigma.html" class="block relative bg-[#EDEFF0] h-[400px] md:h-[300px] overflow-hidden">
+      <img src="images/harba/nextsix.png" alt="Background" class="absolute bottom-0 left-[-20px] md:left-[150px] h-[250px] md:h-[300px] w-auto max-w-none object-cover z-0">
+      <div class="absolute left-[60px] md:left-[700px] top-[72px] md:top-1/2 md:-translate-y-1/2 z-10 text-left">
+        <p class="text-[16px] font-normal mb-2">Next case study</p>
+        <div class="flex items-center space-x-4">
+          <h2 class="text-[36px] font-condensed font-bold leading-none">SIX SIGMA SPORTS</h2>
+          <img src="images/arrow.svg" alt="Arrow Icon" class="w-6 h-6">
+        </div>
+      </div>
+    </a>
+
+
+
+</body>
+</html>
+
+

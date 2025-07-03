@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medikira UX UI Case Study | Milan Ristovski</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #F8F8F8;
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #121116;
+        }
+        @font-face {
+            font-family: 'Helvetica Neue Black Condensed';
+            src: url('fonts/Helvetica Neue 97 Black Condensed.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Helvetica Neue Bold Condensed';
+            src: url('fonts/Helvetica Neue Condensed Bold.ttf') format('truetype');
+        }
+
+        .font-blackcondensed {
+            font-family: 'Helvetica Neue Black Condensed', sans-serif;
+        }
+
+        .font-condensed {
+            font-family: 'Helvetica Neue Bold Condensed', sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 1.0s ease-out, transform 1.0s ease-out;
+        }
+        .fade-in.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        nav a:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body class="text-[#121116]">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const closeMenu = document.getElementById("close-menu");
+
+            menuToggle.addEventListener("click", () => {
+                mobileMenu.classList.remove("hidden");
+                mobileMenu.classList.add("flex");
+                menuToggle.classList.add("hidden");
+            });
+
+            closeMenu.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                mobileMenu.classList.remove("flex");
+                menuToggle.classList.remove("hidden");
+            });
+
+
+    const sections = document.querySelectorAll(".fade-in");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target); // Stop observing after it's shown
+            }
+        });
+    }, { threshold: 0.2 }); // Trigger when 20% of the section is visible
+
+    sections.forEach(section => observer.observe(section));
+});
+    </script>
+    
+    <!-- Header -->
+    <header class="relative flex justify-between items-center py-4 md:py-6 text-[16px] px-[32px] md:px-[140px] font-medium bg-[#EDEFF0]">
+    <a href="index.html" class="text-xl font-bold flex items-center h-full transition-colors duration-200 hover:text-gray-500">MILAN RISTOVSKI</a>
+    <nav class="hidden md:flex space-x-6">
+        <a href="https://drive.google.com/file/d/1QVr-Yve0I63jDH24ldbS-UIoLLUpB1cb/view?usp=sharing" class="transition-colors duration-200 hover:text-gray-500">CV</a>
+        <a href="https://www.linkedin.com/in/milanristovski13/" class="transition-colors duration-200 hover:text-gray-500">LINKEDIN</a>
+        <a href="https://dribbble.com/milanr13" class="transition-colors duration-200 hover:text-gray-500">DRIBBBLE</a>
+        <a href="mailto:milan.ristovski13@gmail.com" class="transition-colors duration-200 hover:text-gray-500">CONTACT</a>
+    </nav>
+    <button id="menu-toggle" class="md:hidden text-2xl z-20 translate-y-[-5px]">&#9776;</button>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-[#EDEFF0] text-center flex-col justify-center items-center hidden z-50">
+        <button id="close-menu" class="absolute top-6 right-6 text-3xl">&times;</button>
+        <div class="flex flex-col space-y-6 text-[20px] font-medium mt-24">
+            <a href="https://drive.google.com/file/d/1QVr-Yve0I63jDH24ldbS-UIoLLUpB1cb/view?usp=sharing" class="transition-colors duration-200 hover:text-gray-500">CV</a>
+            <a href="https://www.linkedin.com/in/milanristovski13/" class="transition-colors duration-200 hover:text-gray-500">LINKEDIN</a>
+            <a href="https://dribbble.com/milanr13" class="transition-colors duration-200 hover:text-gray-500">DRIBBBLE</a>
+            <a href="mailto:milan.ristovski13@gmail.com" class="transition-colors duration-200 hover:text-gray-500">CONTACT</a>
+        </div>
+    </div>
+</header>
+
+    <!-- Section 1 -->
+     <section class="relative h-[480px] md:h-[672px] flex flex-col justify-start items-center bg-[#EDEFF0] px-[32px] md:px-[100px]">
+    <div class="pt-[140px] z-10 text-center fade-in">
+      <h1 class="text-[36px] md:text-[50px] font-bold font-condensed">MEDIKIRA</h1>
+      <p class="text-[14px] md:text-[18px] font-normal leading-relaxed">
+        medical platform for automated tracking of </br> 
+        treatment side effects in oncology patients
+      </p>
+    </div>
+    <img src="images/medikira/medikirabg.png" alt="Background" class="absolute bottom-0 -translate-x-1/2 w-full max-w-[1440px] h-[210px] md:h-[450px] object-cover z-0 fade-in" />
+  </section>
+
+      <!-- Section 2 -->
+  <section class="py-12 flex flex-col fade-in items-center">
+    <div class="text-left mx-[36px] md:mx-0 md:max-w-[600px]">
+      <h2 class="text-[20px] md:text-[24px] font-condensed font-bold mb-4">MY ROLE</h2>
+      <p class="text-[14px] md:text-[16px] font-normal text-justify">
+        I worked on this project as the sole designer, responsible for designing a web-based monitoring platform that supports oncologists in Rwanda. The project was focused on helping doctors keep track of cancer patients’ treatment progress and medical history, despite limited access to digital tools on the patient side. <br />
+        The main phases of my work included: Understanding Technical Constraints, Structuring Medical Data, Wireframing, UI Design, Testing & Iteration with Stakeholders.
+        </p>
+    </div>
+  </section>
+
+   <!-- 1 image -->
+  <section class="py-12 px-[36px] md:px-[100px] fade-in">
+    <div class="w-full">
+      <img src="images/medikira/medikiraui1.png" alt="Dashboard" class="w-full h-auto object-contain">
+    </div>
+    <p class="text-[14px] md:text-[16px] italic text-[#A6A6A6] text-center mt-6">
+      Desktop UI Dashboard
+    </p>
+  </section>
+
+<section class="py-12 flex flex-col fade-in items-center">
+    <div class="text-left mx-[36px] md:mx-0 md:max-w-[600px] w-full px-[32px] md:px-0">
+      <h2 class="text-[20px] md:text-[24px] font-condensed uppercase font-bold mb-4">Main Challenges</h2>
+
+      <div class="bg-[#F4F4F4] rounded-[5px] p-6 mb-8">
+        <div class="flex items-center mb-3">
+          <div class="w-9 h-9 bg-[#01A8BE] rounded-[5px] flex items-center justify-center text-black font-bold text-[20px]">1</div>
+          <div class="ml-2 text-[14px] md:text-[16px] font-bold uppercase leading-none">LACK OF CONTINUITY IN CARE</div>
+        </div>
+        <p class="text-[14px] md:text-[16px] font-normal text-justify">
+          Due to the shortage of oncologists in Rwanda, patients often meet a different doctor at every visit. Without a centralized system for medical records, doctors had to rely on patients retelling their history, often incomplete or inaccurate, which created delays and risked missing critical information.
+        </p>
+      </div>
+
+      <div class="bg-[#F4F4F4] rounded-[5px] p-6 mb-8">
+        <div class="flex items-center mb-3">
+          <div class="w-9 h-9 bg-[#01A8BE] rounded-[5px] flex items-center justify-center text-black font-bold text-[20px]">2</div>
+          <div class="ml-2 text-[14px] md:text-[16px] font-bold uppercase leading-none">TRACKING TREATMENT SIDE EFFECTS</div>
+        </div>
+        <p class="text-[14px] md:text-[16px] font-normal text-justify">
+          There was no easy way for doctors to monitor how patients were responding to treatment between appointments. Given that follow-up visits could be weeks apart, it was important to find a way to surface early signs that a patient might need urgent attention.
+        </p>
+      </div>
+
+      <div class="bg-[#F4F4F4] rounded-[5px] p-6">
+        <div class="flex items-center mb-3">
+          <div class="w-9 h-9 bg-[#01A8BE] rounded-[5px] flex items-center justify-center text-black font-bold text-[20px]">3</div>
+          <div class="ml-2 text-[14px] md:text-[16px] font-bold uppercase leading-none">LIMITED ACCESS TO DEVICES</div>
+        </div>
+        <p class="text-[14px] md:text-[16px] font-normal text-justify">
+          Most patients did not own smartphones or computers, which meant we couldn’t rely on standard digital forms or apps for collecting feedback. The challenge was to design a system that worked through basic mobile phones without losing clarity or engagement.
+          </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 1 image -->
+  <section class="py-12 px-[36px] md:px-[100px] fade-in">
+    <div class="w-full">
+      <img src="images/medikira/medikiraui2.png" alt="Checkout flow" class="w-full h-auto object-contain">
+    </div>
+    <p class="text-[14px] md:text-[16px] italic text-[#A6A6A6] text-center mt-6">
+      Desktop UI Patient Overview
+    </p>
+  </section>
+
+  <section class="py-12 flex flex-col items-center fade-in">
+    <div class="text-left mx-[36px] md:mx-0 md:max-w-[600px]">
+      <h2 class="text-[20px] md:text-[24px] font-condensed font-bold uppercase mb-4">Solution</h2>
+      <p class="text-[14px] md:text-[16px] font-normal list-disc list-inside space-y-10 text-justify">
+        Here’s how I approached these challenges, with a focus on building a system that worked within real-world limitations while supporting both medical staff and patients:<br />
+        <br />
+        <li>To overcome the lack of smartphones, we designed a simple SMS-based survey system. Patients receive a short series of questions by text and respond with a number between 1–5. Their answers are automatically collected and visualized on the doctor’s dashboard.</li><br />
+        <li>To solve the continuity of care problem, we created a centralized patient profile that stores their entire medical history. Any doctor can review previous treatments, medications, and patient feedback before the appointment starts, reducing repetition and saving time.</li><br />
+        <li>To support early intervention, the platform flags worrying patterns in the patient’s survey responses. When a threshold is crossed, both the patient and assigned medical staff receive alerts, making it easier to step in when needed.</li><br />
+      </p>
+    </div>
+  </section>
+
+  <!-- 1 image -->
+  <section class="py-12 px-[36px] md:px-[100px] fade-in">
+    <div class="w-full">
+      <img src="images/medikira/medikiraui3.png" alt="Desktop UI" class="w-full h-auto object-contain">
+    </div>
+    <p class="text-[14px] md:text-[16px] italic text-[#A6A6A6] text-center mt-6">
+      UI elements
+    </p>
+  </section>
+
+
+
+
+
+
+
+
+  
+
+    <a href="meetzo.html" class="block relative bg-[#EDEFF0] h-[400px] md:h-[300px] overflow-hidden">
+      <img src="images/medikira/nextmeetzo.png" alt="Background" class="absolute bottom-0 left-[-20px] md:left-[150px] h-[250px] md:h-[300px] w-auto max-w-none object-cover z-0">
+      <div class="absolute left-[60px] md:left-[700px] top-[72px] md:top-1/2 md:-translate-y-1/2 z-10 text-left">
+        <p class="text-[16px] font-normal mb-2">Next case study</p>
+        <div class="flex items-center space-x-4">
+          <h2 class="text-[36px] font-condensed font-bold leading-none">MEETZO</h2>
+          <img src="images/arrow.svg" alt="Arrow Icon" class="w-6 h-6">
+        </div>
+      </div>
+    </a>
+
+
+
+</body>
+</html>
+
+
